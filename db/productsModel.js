@@ -13,6 +13,9 @@ function productsModel() {
     },
     invNum: () => {
       return inventory.length;
+    },
+    editInv: (index, fn) => {
+      fn(inventory[index]);
     }
   };
 }

@@ -17,9 +17,6 @@ Router.route('/')
     model.addItem(req.body);
     res.json( {success: true} );
   })
-  // .put(`/:${req.body.id}`, (req, res) => {
-
-  // })
   .get( (req, res) => {
     res.send(model.getInv());
   });
