@@ -16,7 +16,9 @@ Router.route('/')
     res.send( {success: true} );
   })
   .get( (req, res) => {
-    res.send(model.getAll());
+    res.render('./articleTemplates/index', {
+      articles: model.getAll()
+    });
   });
 
 Router.route('/:title')

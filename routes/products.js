@@ -4,7 +4,6 @@ const model = require('../db/productsModel');
 const midware = require('../lib/middleware');
 const Router = express.Router();
 
-
 /*==========================
 ==========MIDDLEWARE========*/
 Router.use(bodyParser.json());
@@ -18,7 +17,9 @@ Router.route('/')
     res.json( {success: true} );
   })
   .get( (req, res) => {
-    res.send(model.getAll());
+    res.render('./productTemplates/index', {
+      products: model.getAll()
+    });
   });
 
 Router.route('/:id')
