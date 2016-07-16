@@ -20,6 +20,7 @@ function productsModel() {
       }
     });
   }
+
   return {
     getAll: () => {
       return memory;
