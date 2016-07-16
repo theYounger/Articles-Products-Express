@@ -17,6 +17,10 @@ app.use('/articles', articles);
 app.use('/products', products);
 /*====================*/
 
+//APP WIDE MIDDLEWARE THAT PERFORMS LOG
+///////////////////////////////////////
+
+
 var server = app.listen(3000, () => {
   var host = 'localhost';
   var port = server.address().port;

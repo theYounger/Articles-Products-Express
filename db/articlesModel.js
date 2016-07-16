@@ -17,12 +17,21 @@ function articlesModel() {
     });
   }
 
+  function _deleteArti(req) {
+    memory.forEach(function(ele, indie, arrie) {
+      if(ele.title == req.params.title) {
+        arrie.splice(indie, 1);
+      }
+    });
+  }
+
   return {
     getAll: () => {
       return memory;
     },
     addItem: _addItem,
-    editArti: _editArti
+    editArti: _editArti,
+    deleteArti: _deleteArti
   };
 
 }

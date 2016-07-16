@@ -23,6 +23,10 @@ Router.route('/:title')
   .put( (req, res) => {
     model.editArti(req);
     res.send( {success: true} );
+  })
+  .delete( (req, res) => {
+    model.deleteArti(req);
+    res.send( {success: true} );
   });
 
 
