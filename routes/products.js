@@ -18,7 +18,17 @@ Router.route('/')
     res.json( {success: true} );
   })
   .get( (req, res) => {
-    res.send(model.getInv());
+    res.send(model.getAll());
+  });
+
+Router.route('/:id')
+  .put( midware.idCheck(), (req, res) => {
+    model.editInv(req);
+    res.json( {success: true} );
+  })
+  .delete( midware.idCheck(), (req, res) => {
+    model.deleteInv(req);
+    res.json( {success: true} );
   });
 
 module.exports = Router;

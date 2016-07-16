@@ -1,22 +1,37 @@
-'use strict';
 
 function productsModel() {
 
-  let inventory = new Array();
+  const memory = [];
 
+  function _editInv(req) {
+    memory.forEach(function(ele, indie) {
+      if(ele.id == req.params.id) {
+        for (var key in ele) {
+          ele[key] = req.body[key];
+        }
+      }
+    });
+  }
+
+  function _deleteInv(req) {
+    memory.forEach(function(ele, indie, arrie) {
+      if(ele.id == req.params.id) {
+        arrie.splice(indie, 1);
+      }
+    });
+  }
   return {
-    getInv: () => {
-      return inventory;
+    getAll: () => {
+      return memory;
     },
     addItem: (item) => {
-      inventory.push(item);
+      memory.push(item);
     },
     invNum: () => {
-      return inventory.length;
+      return memory.length;
     },
-    editInv: (index, fn) => {
-      fn(inventory[index]);
-    }
+    editInv: _editInv,
+    deleteInv: _deleteInv
   };
 }
 
