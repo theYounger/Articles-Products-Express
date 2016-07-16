@@ -32,4 +32,9 @@ Router.route('/:id')
     res.json( {success: true} );
   });
 
+Router.route('/new')
+  .get( (req, res) => {
+    res.render('./productTemplates/new');
+  });
+
 module.exports = Router;

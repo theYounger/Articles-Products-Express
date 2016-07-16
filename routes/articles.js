@@ -31,6 +31,11 @@ Router.route('/:title')
     res.send( {success: true} );
   });
 
+Router.route('/new')
+  .get( (req, res) => {
+    res.render('./articleTemplates/new')
+  });
+
 
 
 module.exports = Router;
