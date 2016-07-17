@@ -30,7 +30,7 @@ Router.route('/:id')
     model.editInv(req);
     res.json( {success: true} );
   })
-  .delete( midware.idCheck(), (req, res) => {
+  .delete( /*midware.idCheck(),*/ (req, res) => {
     model.deleteInv(req);
     res.json( {success: true} );
   });
