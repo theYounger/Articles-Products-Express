@@ -21,6 +21,12 @@ function productsModel() {
     });
   }
 
+  function _getIdItem(req) {
+    return memory.filter(function(ele) {
+      return ele.id == req.params.id;
+    });
+  }
+
   return {
     getAll: () => {
       return memory;
@@ -32,7 +38,8 @@ function productsModel() {
       return memory.length;
     },
     editInv: _editInv,
-    deleteInv: _deleteInv
+    deleteInv: _deleteInv,
+    getIdItem: _getIdItem
   };
 }
 

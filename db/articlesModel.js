@@ -25,13 +25,20 @@ function articlesModel() {
     });
   }
 
+  function _getIdItem(req) {
+    return memory.filter(function(ele) {
+      return ele.title == req.params.title;
+    });
+  }
+
   return {
     getAll: () => {
       return memory;
     },
     addItem: _addItem,
     editArti: _editArti,
-    deleteArti: _deleteArti
+    deleteArti: _deleteArti,
+    getIdItem: _getIdItem
   };
 
 }

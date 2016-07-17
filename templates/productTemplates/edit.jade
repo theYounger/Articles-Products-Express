@@ -1,0 +1,17 @@
+h1 Edit a product!
+form(action='/products/#{editId}' method='POST')
+  input(type='hidden' name='_method' value='PUT')
+  div
+    label(for='name') Name
+    input(type='text' name='name' value='#{editName}' id='name')
+
+  div
+    label(for='price') Price
+    input(type='text' name='price' value='#{editPrice}' id='price')
+
+  div
+    label(for='inventory') Inventory
+    input(type='text' name='inventory' value='#{editInventory}' id='inventory')
+
+  div.button
+    button(type='submit') Send

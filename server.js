@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const articlesModel = require('./db/articlesModel');
 const productsModel = require('./db/productsModel');
+
 /*==========================
 ==========JADE SET==========*/
 app.set('view engine', 'jade');
