@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 ==========MIDDLEWARE========*/
 Router.use(bodyParser.json());
 Router.use(bodyParser.urlencoded({ extended: true }));
-Router.use(methodOverride( (req, res ) => {
+Router.use(methodOverride( (req, res) => {
   if(req.body && typeof req.body === 'object' && '_method' in req.body) {
     const method = req.body._method;
     delete req.body_method;
