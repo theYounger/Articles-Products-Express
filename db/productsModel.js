@@ -3,7 +3,7 @@ function productsModel() {
 
   const memory = [];
 
-  function _editInv(req) {
+  function editInv(req) {
     memory.forEach(function(ele, indie) {
       if(ele.id == req.params.id) {
         for (var key in ele) {
@@ -13,7 +13,7 @@ function productsModel() {
     });
   }
 
-  function _deleteInv(req) {
+  function deleteInv(req) {
     memory.forEach(function(ele, indie, arrie) {
       if(ele.id == req.params.id) {
         arrie.splice(indie, 1);
@@ -21,7 +21,7 @@ function productsModel() {
     });
   }
 
-  function _getIdItem(req) {
+  function getIdItem(req) {
     return memory.filter(function(ele) {
       return ele.id == req.params.id;
     });
@@ -37,9 +37,9 @@ function productsModel() {
     invNum: () => {
       return memory.length;
     },
-    editInv: _editInv,
-    deleteInv: _deleteInv,
-    getIdItem: _getIdItem
+    editInv,
+    deleteInv,
+    getIdItem
   };
 }
 

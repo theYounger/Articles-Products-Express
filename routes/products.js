@@ -9,13 +9,7 @@ const methodOverride = require('method-override');
 ==========MIDDLEWARE========*/
 Router.use(bodyParser.json());
 Router.use(bodyParser.urlencoded({ extended: true }));
-Router.use(methodOverride( (req, res) => {
-  if(req.body && typeof req.body === 'object' && '_method' in req.body) {
-    const method = req.body._method;
-    delete req.body_method;
-    return method;
-  }
-}));
+Router.use(methodOverride(midware.postToPut));
 /*==========================*/
 
 Router.route('/')
@@ -31,6 +25,7 @@ Router.route('/')
   });
 
 Router.route('/:id')
+  /*----------  Find a way to make midware.idCheck work ----------*/
   .put( /*midware.idCheck(),*/ (req, res) => {
     model.editInv(req);
     res.json( {success: true} );
@@ -47,11 +42,12 @@ Router.route('/new')
 
 Router.route('/:id/edit')
   .get( (req, res) => {
+    const modelItem = model.getIdItem(req)[0];
     res.render('./productTemplates/edit', {
-      editName: model.getIdItem(req)[0].name,
-      editPrice: model.getIdItem(req)[0].price,
-      editInventory: model.getIdItem(req)[0].inventory,
-      editId: model.getIdItem(req)[0].id
+      editName: modelItem.name,
+      editPrice: modelItem.price,
+      editInventory: modelItem.inventory,
+      editId: modelItem.id
     });
   });
 

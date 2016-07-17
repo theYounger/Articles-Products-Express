@@ -2,12 +2,12 @@ function articlesModel() {
 
   const memory = [];
 
-  function _addItem(item) {
+  function addItem(item) {
     item.urlTitle = encodeURI(item.title);
     memory.push(item);
   }
 
-  function _editArti(req) {
+  function editArti(req) {
     memory.forEach(function(ele) {
       if(ele.title == req.params.title) {
         for (var key in ele) {
@@ -17,7 +17,7 @@ function articlesModel() {
     });
   }
 
-  function _deleteArti(req) {
+  function deleteArti(req) {
     memory.forEach(function(ele, indie, arrie) {
       if(ele.title == req.params.title) {
         arrie.splice(indie, 1);
@@ -25,7 +25,7 @@ function articlesModel() {
     });
   }
 
-  function _getIdItem(req) {
+  function getIdItem(req) {
     return memory.filter(function(ele) {
       return ele.title == req.params.title;
     });
@@ -35,10 +35,10 @@ function articlesModel() {
     getAll: () => {
       return memory;
     },
-    addItem: _addItem,
-    editArti: _editArti,
-    deleteArti: _deleteArti,
-    getIdItem: _getIdItem
+    addItem,
+    editArti,
+    deleteArti,
+    getIdItem
   };
 
 }
