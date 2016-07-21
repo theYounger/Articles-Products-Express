@@ -13,14 +13,17 @@ Router.use(methodOverride(midware.postToPut));
 /*==========================*/
 
 Router.route('/')
-  .post( midware.payloadCheck(['name','price','inventory']), (req, res) => {
+// midware.payloadCheck(['name','price','inventory'])
+  .post( (req, res) => {
     req.body.id = model.invNum();
-    model.addItem(req.body);
+    model.addItem(req, res);
     res.json( {success: true} );
   })
   .get( (req, res) => {
-    res.render('./productTemplates/index', {
-      products: model.getAll()
+    model.getAll().then(function(data) {
+      res.render('./productTemplates/index', {
+        products: data
+      });
     });
   });
 

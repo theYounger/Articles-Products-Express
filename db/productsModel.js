@@ -1,7 +1,23 @@
 
 function productsModel() {
-
+  const db = require('./dbindex');
   const memory = [];
+
+  function addItem(req, res) {
+   db.query("insert into products(name, price, inventory) values($1, $2, $3)", [req.body.name, req.body.price, req.body.inventory])
+    .then(console.log)
+    .catch(console.log);
+  }
+
+  function getAll() {
+    return db.query("select * from products") /* where active=$1", [true]) */
+    .then(function (data) {
+      return data;
+    })
+    .catch(function (error) {
+        // error;
+    });
+  }
 
   function editInv(req) {
     memory.forEach(function(ele, indie) {
@@ -28,12 +44,11 @@ function productsModel() {
   }
 
   return {
-    getAll: () => {
-      return memory;
-    },
-    addItem: (item) => {
-      memory.push(item);
-    },
+    getAll,
+    addItem,
+    // (item) => {
+    //   memory.push(item);
+    // },
     invNum: () => {
       return memory.length;
     },

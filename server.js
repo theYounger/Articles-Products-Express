@@ -5,7 +5,6 @@ const app = express();
 const articlesModel = require('./db/articlesModel');
 const productsModel = require('./db/productsModel');
 const midware = require('./lib/middleware');
-
 /*==========================
 ==========JADE SET==========*/
 app.set('view engine', 'jade');
@@ -20,7 +19,7 @@ const products = require('./routes/products');
 
 /*==========================
 ==========MIDDLEWARE=========*/
-app.use(midware.analyticsTrack());
+// app.use(midware.analyticsTrack());
 app.use('/articles', articles);
 app.use('/products', products);
 /*==========================*/
